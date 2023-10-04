@@ -1,11 +1,27 @@
 import { component$ } from '@builder.io/qwik';
 import { DocumentHead } from '@builder.io/qwik-city';
+import { PaginatedTable } from '../../components/table/paginated-table/paginated-table';
 
 export default component$(() => {
   return (
     <>
-      <h1>Dashboard</h1>
-      <p class="text-red-700">//TODO: Implement some components</p>
+      <PaginatedTable
+        headers={[
+          {
+            key: 'shortenedUrl',
+            label: 'Shortened URL',
+          },
+          {
+            key: 'originalUrl',
+            label: 'Original URL',
+          },
+          {
+            key: 'expirationTime',
+            label: 'Expiration time',
+          },
+        ]}
+        endpoint={`${process.env.CLIENTSIDE_API_DOMAIN}/api/v1/urls`}
+      />
     </>
   );
 });
